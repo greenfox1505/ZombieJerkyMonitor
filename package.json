@@ -12,11 +12,16 @@
   },
   "author": "Green Fox",
   "license": "ISC",
+  "bin": {
+    "ZombieJerkyMonitor": "run.js"
+  },
+
   "bugs": {
     "url": "https://github.com/greenfox1505/monitor/issues"
   },
   "homepage": "https://github.com/greenfox1505/monitor#readme",
   "dependencies": {
+    "body-parser": "^1.16.0",
     "express": "^4.14.0"
   }
 }
