@@ -1,6 +1,6 @@
 {
   "name": "monitor",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "monitor thing",
   "main": "run.js",
   "scripts": {
@@ -21,7 +21,6 @@
   },
   "homepage": "https://github.com/greenfox1505/monitor#readme",
   "dependencies": {
-    "body-parser": "^1.16.0",
     "express": "^4.14.0"
   }
 }
