@@ -1,0 +1,171 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Projects</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="theme-color" content="#000">
+
+    <!-- style  -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="assets/css/docs.css" rel="stylesheet">
+    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+    <link href="black.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- TODO icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
+
+    <style id="holderjs-style" type="text/css">
+        .holderjs-fluid {
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            font-family: sans-serif;
+            margin: 0
+        }
+        #loading {
+			color:#000;
+			background:#f55;
+		}
+		#appBody {
+			display:none;
+		}
+		@media (max-width: 767px) {
+  .container {
+    margin-left: 0px;
+  }
+  }
+    </style>
+    <link rel="icon" type="image/png" href="./favicon.ico">
+</head>
+
+<body data-spy="scroll" data-target=".bs-docs-sidebar" style="visibility: visible;">
+
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                </button>
+                <a class="brand" href="./index.html">RyanLeverenz.net</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li class="">
+                            <a href="./index.html">About Me</a>
+                        </li>
+                        <li class="">
+                            <a href="./Projects.html">Projects</a>
+                        </li>
+                        <li class="active">
+                            <a href="./Servers.html">Servers</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Subhead
+================================================== -->
+    <br>
+
+    <!--    <div style="max-width:1700">-->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+	<script>
+		debugger
+		angular.module('ServersApp', [])
+		   .controller('ServersController', ['$scope', '$http', '$sce', function($scope, $http,$sce) {
+			   var url = "https://monitor.zombiejerky.net/api/";
+			   console.log($sce);
+			   $sce.trustAsResourceUrl(url);
+			   $http.jsonp(url, {jsonpCallbackParam: 'callback'}).then(function(response){
+				document.getElementById("loading").style.display = "none"
+				document.getElementById("appBody").style.display = "block"
+
+				//todo:hide loading message
+				$scope.data = response.data;
+				console.log(response.data);
+		   })
+		}]);
+	</script>
+	<div class="container" ng-app="ServersApp">
+		<div class="page-header" id="loading">LOADING</div>
+		<div class="row" id="appBody" ng-controller="ServersController">
+			<div class="span4" ng-repeat="n in data">
+				<div class="page-header"><h1>{{n.name}}</h1></div>
+					<h1>Site:</h1>
+					<p>{{n.site}}</p>
+					<h1>Local:</h1>
+					<p>{{n.local}}</p>
+					<h1>Local Time:</h1>
+					<p>{{n.localTime}}</p>
+					<!--todo: last updated, warning when updated longer than N ago-->
+			</div>
+		</div>
+		
+		<div class="row">
+		<div class="span12">
+			<div class="page-header"><h1>About</h1></div>
+			<p>Monitor.ZombieJerky.Net is a work in progress. It's 
+			designed to create a simple system to check status of my 
+			systems as well as exapnd my NodeJS and HTML skills. (I 
+			probably should use MEAN, but I probably wont because it's
+			not nessary for this project)</p>
+		</div></div>
+	</div>
+
+
+        <!-- Footer
+    ================================================== -->
+        <footer class="footer">
+          <div class="container">
+            <br>
+            <br>
+            <p>By Ryan Leverenz; <a href="mailto:Me@RyanLeverenz.net">Me@RyanLeverenz.net</a>; Theme modified from <a href="https://github.com/kristopolous/BOOTSTRA.386">BOOTSTRA.386</a></p>
+          </div>
+        </footer>
+
+
+
+        <!-- Le javascript
+    ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="assets/js/jquery.js"></script>
+        <script src="assets/js/bootstrap-386.js"></script>
+        <script src="assets/js/bootstrap-transition.js"></script>
+        <script src="assets/js/bootstrap-alert.js"></script>
+        <script src="assets/js/bootstrap-modal.js"></script>
+        <script src="assets/js/bootstrap-dropdown.js"></script>
+        <script src="assets/js/bootstrap-scrollspy.js"></script>
+        <script src="assets/js/bootstrap-tab.js"></script>
+        <script src="assets/js/bootstrap-tooltip.js"></script>
+        <script src="assets/js/bootstrap-popover.js"></script>
+        <script src="assets/js/bootstrap-button.js"></script>
+        <script src="assets/js/bootstrap-collapse.js"></script>
+        <script src="assets/js/bootstrap-carousel.js"></script>
+        <script src="assets/js/bootstrap-typeahead.js"></script>
+        <script src="assets/js/bootstrap-affix.js"></script>
+
+        <script src="assets/js/holder/holder.js"></script>
+        <script src="assets/js/google-code-prettify/prettify.js"></script>
+
+        <script src="assets/js/application.js"></script>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+body {
+  background-color: #000;
+/*  color: #bbb;*/
+}
+
+.page-header {
+  background: #0A0;
+  color:#fff;
+}
+
+.navbar-inverse .brand {
+  color: #0F0;
+  background: #555;
+}
+
+.navbar-inverse .brand:hover {
+  color: #0F0;
+}
+
+.navbar-inverse .navbar-inner {
+  background: #555;
+}
+
+a {
+  color: #0f0;
+}
+
+a:hover {
+  color: #0f0;
+  background: #555;
+}
+
+.navbar-inverse .nav > li > a {
+  color: #fff;
+  text-shadow: 0;
+  background: #555;
+}
+
+.nav {
+  background: #555;
+  color: #555;
+}
+
+.nav:hover {
+  color: #555;
+}
+
+
+
+.nav-list > .active > a,
+.nav-list > .active > a:focus {
+  background: #0a0;
+  color: #000;
+}
+
+.nav-list > .active > a:hover {
+  background: #000;
+}
+
+iframe {
+  width: 100%;
+  border:0;
+  
+  background:#fff;
+}
+
+@media (max-width: 767px) {
+  .container {
+    margin-left: 0px;
+  }
+}
+
+.nav-list {
+    margin-left: 5px;
+}
+/*.row{*/
+/*  max-width:1700;*/
+/*}*/
+
+/*@media (min-width: 1200px) {*/
+/*  .row {*/
+/*    width: 1128px;*/
+/*  }*/
+/*}*/
+
+/*@media (max-width: 979px) {*/
+/*  .row {*/
+/*    width: 944px;*/
+/*  }*/
+/*}*/
