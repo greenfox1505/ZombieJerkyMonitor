@@ -105,7 +105,6 @@
 		} 
 		return query_string;
 		}();
-		debugger;
 		angular.module('ServersApp', [])
 		   .controller('ServersController', ['$scope', '$http', '$sce', function($scope, $http,$sce) {
 			   var url = "https://monitor.zombiejerky.net/api/";
@@ -126,6 +125,15 @@
 					$scope.data = data;
 				}
 				console.log(response.data);
+
+				var now = Date.now()/1000;
+				for( i in $scope.data){
+					console.log($scope.data[i].realLocalTime - now, i)
+					if(($scope.data[i].realLocalTime - now) < -180){ //> if more than 3 mins old, label it stale!
+						$scope.data[i].msg = "STALE!"
+						$scope.data[i].class = "STALE"
+					}
+				}
 		   })
 		}]);
 	</script>
@@ -133,13 +141,14 @@
 		<div class="page-header" id="loading">LOADING</div>
 		<div class="row" id="appBody" ng-controller="ServersController">
 			<div class="span4" ng-repeat="n in data">
-				<div class="page-header"><h1>{{n.name}}</h1></div>
+				<div class="page-header {{n.class}}"><h1>{{n.name}}</h1></div>
 					<h1>Site:</h1>
 					<p>{{n.site}}</p>
 					<h1>Local:</h1>
 					<p>{{n.local}}</p>
 					<h1>Local Time:</h1>
 					<p>{{n.localTime}}</p>
+					<h3 ng-hide="n.msg == null">{{n.msg}}</h3>
 					<!--todo: last updated, warning when updated longer than N ago-->
 			</div>
 		</div>
