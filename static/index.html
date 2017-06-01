@@ -85,7 +85,27 @@
     <!--    <div style="max-width:1700">-->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
 	<script>
-		debugger
+		var QueryString = function () {
+		var query_string = {};
+		var query = window.location.search.substring(1);
+		var vars = query.split("&");
+		for (var i=0;i<vars.length;i++) {//>fucking nano syntax highlighting
+		  var pair = vars[i].split("=");
+		      // If first entry with this name
+		  if (typeof query_string[pair[0]] === "undefined") {
+		    query_string[pair[0]] = decodeURIComponent(pair[1]);
+		      // If second entry with this name
+		  } else if (typeof query_string[pair[0]] === "string") {
+		    var arr = [ query_string[pair[0]],decodeURIComponent(pair[1]) ];
+		    query_string[pair[0]] = arr;
+		      // If third or later entry with this name
+		  } else {
+		    query_string[pair[0]].push(decodeURIComponent(pair[1]));
+		  }
+		} 
+		return query_string;
+		}();
+		debugger;
 		angular.module('ServersApp', [])
 		   .controller('ServersController', ['$scope', '$http', '$sce', function($scope, $http,$sce) {
 			   var url = "https://monitor.zombiejerky.net/api/";
@@ -94,9 +114,17 @@
 			   $http.jsonp(url, {jsonpCallbackParam: 'callback'}).then(function(response){
 				document.getElementById("loading").style.display = "none"
 				document.getElementById("appBody").style.display = "block"
-
 				//todo:hide loading message
 				$scope.data = response.data;
+				if(QueryString.systems){
+					var data = [];
+					var systems = QueryString.systems.split(",");
+					console.log(systems);
+					for(i in systems){
+						data.push(response.data[systems[i]])
+					}
+					$scope.data = data;
+				}
 				console.log(response.data);
 		   })
 		}]);
