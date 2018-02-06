@@ -28,13 +28,6 @@ app.get("/api/:serverName",function(req,res){
 	res.send(data[req.params.serverName]);
 })
 
-app.put("/test/:serverName",function(req,res){
-	msg = "Body content depricated. Please update " + req.params.serverName + " at " + (req.headers['x-forwarded-for'] || req.connection.remoteAddress);
-	console.log(msg);
-	res.status(299);
-	res.send("ERROR!\n" + msg);
-})
-
 function putData(myData){
 	myData.data.name = myData.name;
 	data[myData.name] = myData.data;
