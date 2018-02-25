@@ -1,10 +1,9 @@
 {
   "name": "monitor",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "monitor thing",
   "main": "run.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -15,7 +14,6 @@
   "bin": {
     "ZombieJerkyMonitor": "run.js"
   },
-
   "bugs": {
     "url": "https://github.com/greenfox1505/monitor/issues"
   },
