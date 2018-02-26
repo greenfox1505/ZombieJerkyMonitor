@@ -31,8 +31,15 @@ CPU(){
 }
 
 # data.RAM = payload.RAM;
-#TODO
+#
 
+QuerryURL() {
+    echo "?$(Global)&$(Local)&$(Uptime)&$(CPU)"
+}
 
-
-echo "$(Host)&$(Global)&$(Local)&$(Uptime)&$(CPU)"
+#MonitorHost="https://monitor.zombiejerky.net"
+MonitorHost="http://localhost:8000"
+Path="/API/post/$(cat /etc/hostname)"
+URL="${MonitorHost}${Path}$(QuerryURL)"
+echo $URL
+wget -qO- "$URL" &> /dev/null 

@@ -12,7 +12,7 @@
   "author": "Green Fox",
   "license": "ISC",
   "bin": {
-    "ZombieJerkyMonitor": "run.js"
+    "ZombieJerkyMonitor": "Monitor2.js"
   },
   "bugs": {
     "url": "https://github.com/greenfox1505/monitor/issues"

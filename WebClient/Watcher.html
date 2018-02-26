@@ -10,7 +10,7 @@
             fetch("./API/notifications").then((e) => {
                 return e.json();
             }).then((e) => {
-                CreateNotificationLine(e)
+                CreatePreLine(e)
                 GetNotifications();
             }).catch((e) => {
                 debugger
@@ -19,7 +19,7 @@
         }
         GetNotifications();
 
-        function CreateNotificationLine(data) {
+        function CreatePreLine(data) {
             var pre = document.createElement("pre");
             pre.innerText = JSON.stringify(data, null, 2);
             box.appendChild(pre);

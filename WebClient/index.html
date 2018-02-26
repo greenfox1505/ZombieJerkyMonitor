@@ -6,22 +6,25 @@
     <div id="box"></div>
     <script>
         var box = document.getElementById("box");
-        function GetNotifications() {
-            fetch("./API/notifications").then((e) => {
-                return e.json();
-            }).then((e) => {
-                console.log(e);
-                var pre = document.createElement("pre");
-                pre.innerText = JSON.stringify(e, null, 2);
-                box.appendChild(pre);
 
-                GetNotifications();
-            })
-                .catch((e) => {
-                    GetNotifications();
-                });
+        fetch("./API/list").then((e) => {
+            return e.json();
+        }).then((e) => {
+            for( var i in e){
+                fetch("./API/get/" + e[i]).then((e)=>{
+                    return e.json()
+                }).then((e)=>{
+                    console.log(e);
+                    CreatePreLine(e);
+                })
+            }
+            console.log(e);
+        })
+        function CreatePreLine(data) {
+            var pre = document.createElement("pre");
+            pre.innerText = JSON.stringify(data, null, 2);
+            box.appendChild(pre);
         }
-        GetNotifications();
 
     </script>
 </body>
