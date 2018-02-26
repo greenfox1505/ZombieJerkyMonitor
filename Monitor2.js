@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var NotificationManager = new (require( "./NotificationManager.js"))()
 var hostManager = require("./HostManager.js")(NotificationManager.pushCallback()); 
 
