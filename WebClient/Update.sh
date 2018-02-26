@@ -37,8 +37,8 @@ QuerryURL() {
     echo "?$(Global)&$(Local)&$(Uptime)&$(CPU)"
 }
 
-#MonitorHost="https://monitor.zombiejerky.net"
-MonitorHost="http://localhost:8000"
+MonitorHost="https://monitor.zombiejerky.net"
+#MonitorHost="http://localhost:8000"
 Path="/API/post/$(cat /etc/hostname)"
 URL="${MonitorHost}${Path}$(QuerryURL)"
 echo $URL
