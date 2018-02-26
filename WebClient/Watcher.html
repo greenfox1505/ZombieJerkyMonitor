@@ -5,6 +5,7 @@
 <body>
     <div id="box"></div>
     <script>
+        debugger
         var box = document.getElementById("box");
         function GetNotifications() {
             fetch("./API/notifications").then((e) => {
@@ -13,7 +14,6 @@
                 CreatePreLine(e)
                 GetNotifications();
             }).catch((e) => {
-                debugger
                 GetNotifications();
             });
         }
