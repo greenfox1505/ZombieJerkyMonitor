@@ -25,7 +25,7 @@ The web client would double as a native client. Not sure how I should handle not
 
 ## API
 
-### /API/post/{hostname}
+### /API/post/:host
 
 Main update function. All properties are encoded through query strings.
 
@@ -33,10 +33,17 @@ Main update function. All properties are encoded through query strings.
 
 Returns server list
 
-### /API/get/{hostname}
+### /API/get/:host
 
 Gets single server
 
 ### /API/notifications/
 
-Not totally sure how this works yet. Could be a websocket/longpoll that just pushes notifications as they come. This has a lot of limitations; most importantly if my computer is off, I lose all notices.
+Not totally sure how this works yet. Could be a websocket/longpoll that just pushes notifications as they come. This has a lot of limitations; most importantly if my computer is off, I lose all notices (that might not be too bad though...)
+
+
+### /Script.sh
+
+The script used for Monitor.
+
+This script opens ${MonitorHost}/API/post/${hostname}?${QUERY_PARAM}

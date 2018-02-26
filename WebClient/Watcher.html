@@ -1,0 +1,29 @@
+<head>
+
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        var box = document.getElementById("box");
+        function GetNotifications() {
+            fetch("./API/notifications").then((e) => {
+                return e.json();
+            }).then((e) => {
+                CreateNotificationLine(e)
+                GetNotifications();
+            }).catch((e) => {
+                debugger
+                GetNotifications();
+            });
+        }
+        GetNotifications();
+
+        function CreateNotificationLine(data) {
+            var pre = document.createElement("pre");
+            pre.innerText = JSON.stringify(data, null, 2);
+            box.appendChild(pre);
+        }
+
+    </script>
+</body>
