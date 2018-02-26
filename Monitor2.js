@@ -7,6 +7,7 @@ var hostManager = require("./HostManager.js")(NotificationManager.pushCallback()
 var express = require('express')
 var app = express()
 var config = require('./config.json')
+const path = require('path');
 app.use('/',express.static(path.join(__dirname, 'WebClient'))) // "static/index.html"
 
 
