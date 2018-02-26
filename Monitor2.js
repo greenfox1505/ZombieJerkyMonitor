@@ -7,7 +7,7 @@ var hostManager = require("./HostManager.js")(NotificationManager.pushCallback()
 var express = require('express')
 var app = express()
 var config = require('./config.json')
-app.use('/',express.static("WebClient")) // "static/index.html"
+app.use('/',express.static(path.join(__dirname, 'WebClient'))) // "static/index.html"
 
 
 app.get("/API/list",(req,res)=>{
