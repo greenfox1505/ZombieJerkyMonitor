@@ -10,12 +10,12 @@ My old Monitor server is old. I'd like to enhance it.
 ## Feature Wishless for Monitor 2:
 * Monitor system stats:
     * CPU (2.0)
-    * RAM (2.0)
+    * RAM (2.0.5)
     * Net/DiskIO? (2.0.5)
 * Push notifications ("This thing happend/You Have Uncleared Notifications")
     * IP Changes (2.0)
-    * Disconnects (2.0)
-    * Down detection (2.0)
+    * Failing to report (2.0)
+    * Reboot detection (2.0)
     * Thresholds (2.2)
     * Warning Message assigned domains do not match host IPs (2.3)
 * Database?! (2.1)
@@ -47,3 +47,5 @@ Not totally sure how this works yet. Could be a websocket/longpoll that just pus
 The script used for Monitor.
 
 This script opens ${MonitorHost}/API/post/${hostname}?${QUERY_PARAM}
+
+crontab -e 
