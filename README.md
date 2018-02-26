@@ -42,10 +42,8 @@ Gets single server
 Not totally sure how this works yet. Could be a websocket/longpoll that just pushes notifications as they come. This has a lot of limitations; most importantly if my computer is off, I lose all notices (that might not be too bad though...)
 
 
-### /Script.sh
+### /Update.sh
 
 The script used for Monitor.
 
 This script opens ${MonitorHost}/API/post/${hostname}?${QUERY_PARAM}
-
-crontab -e 
