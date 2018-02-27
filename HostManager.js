@@ -70,7 +70,9 @@ function ModuelBuilder(notificationHandler) {
 				});
 			}
 			//check reboot
+			payload.uptime = parseInt(payload.uptime)
 			if ((this.data.uptime) > payload.uptime) {
+				console.log("old", this.data ,"new", payload )
 				notificationHandler({
 					label: "SYSTEM REBOOTED!",
 					host: this.data.host,
