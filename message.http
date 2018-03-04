@@ -1,0 +1,22 @@
+GET http://localhost:8000/API/list HTTP/1.1
+
+###
+
+GET http://localhost:8000/API/get/Mercury HTTP/1.1
+
+###
+#set defualt
+GET http://localhost:8000/API/post/Mercury?global=1.1.1.1&local=1.1.1.1&uptime=100&CPU=0.00 HTTP/1.1
+
+###
+#reboot detect test
+GET http://localhost:8000/API/post/Mercury?global=1.1.1.1&local=1.1.1.1&uptime=10&CPU=0.00 HTTP/1.1
+
+###
+#IP detect test
+GET http://localhost:8000/API/post/Mercury?global=1.0.1.1&local=1.1.1.1&uptime=10&CPU=0.00 HTTP/1.1
+
+
+###
+#Get Old
+GET http://localhost:8000/API/notifications/old

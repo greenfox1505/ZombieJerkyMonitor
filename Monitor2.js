@@ -43,6 +43,9 @@ app.get("/API/notifications",(req,res)=>{
 	//todo add subscriber name!
 	NotificationManager.subscribe((e)=>{res.send(e)});
 })
+app.get("/API/notifications/old",(req,res)=>{
+	NotificationManager.getOld((e)=>{res.send(e)});
+})
 
 
 
