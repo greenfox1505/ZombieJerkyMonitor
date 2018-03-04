@@ -1,3 +1,4 @@
+var config = require("./config.json")
 
 class NotificationManager {
 	constructor(){
@@ -14,7 +15,7 @@ class NotificationManager {
 		for( var i in this.subscribers){
 			this.subscribers[i](Message);
 		}
-		this.subscribers = [];
+	this.subscribers = [];
 	}
 }
 

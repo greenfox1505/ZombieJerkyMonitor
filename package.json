@@ -3,8 +3,7 @@
   "version": "0.2.0",
   "description": "monitor thing",
   "main": "run.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/greenfox1505/monitor.git"
@@ -19,6 +18,8 @@
   },
   "homepage": "https://github.com/greenfox1505/monitor#readme",
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "npm": "^5.7.1",
+    "twit": "^2.2.9"
   }
 }
