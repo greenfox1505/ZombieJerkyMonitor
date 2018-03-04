@@ -5,10 +5,21 @@
 <body>
     <div id="box"></div>
     <script>
-        debugger
         var box = document.getElementById("box");
+
+
+        fetch("/API/notifications/old").then((e) => {
+            return e.json();
+        }).then((e) => {
+            for (i in e) {
+                CreatePreLine(e[i])
+            }
+        }).then(GetNotifications).catch((e)=>{
+        })
+
+
         function GetNotifications() {
-            fetch("./API/notifications").then((e) => {
+            fetch("/API/notifications").then((e) => {
                 return e.json();
             }).then((e) => {
                 CreatePreLine(e)
@@ -17,12 +28,12 @@
                 GetNotifications();
             });
         }
-        GetNotifications();
 
         function CreatePreLine(data) {
             var pre = document.createElement("pre");
             pre.innerText = JSON.stringify(data, null, 2);
-            box.appendChild(pre);
+            box.insertBefore(pre,box.firstChild);
+            box.firstChild = pre;
         }
 
     </script>
