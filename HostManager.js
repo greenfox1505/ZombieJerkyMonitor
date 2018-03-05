@@ -43,6 +43,7 @@ function ModuelBuilder(notificationHandler) {
 		constructor(firstPayload) {
 			//maybe I should have it read/write to disk?
 			this.update(firstPayload);
+
 			if (runtime() > (60 * 5)) {
 				notificationHandler({
 					label: "NEW HOST!",
@@ -50,6 +51,10 @@ function ModuelBuilder(notificationHandler) {
 					body: firstPayload
 				})
 			}
+			else{
+				console.log("no new hosts while fresh")
+			}
+
 		}
 		getData() {
 			return JSON.parse(JSON.stringify(this.data));//there is DEFINATLY a better way to do this; I don't even know if I need this security.
