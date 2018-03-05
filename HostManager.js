@@ -1,5 +1,11 @@
 var config = require("./config.json")
 
+
+var start = Date.now()
+function runtime() {
+	return (Date.now() - start) / 1000;
+}
+
 /**
  * 
  * @param {*} notificationHandler 
@@ -35,12 +41,15 @@ function ModuelBuilder(notificationHandler) {
 
 	class HostNode {
 		constructor(firstPayload) {
+			//maybe I should have it read/write to disk?
 			this.update(firstPayload);
-			notificationHandler({
-				label: "NEW HOST!",
-				host: this.data.host,
-				body: firstPayload
-			})
+			if (runtime() > (60 * 5)) {
+				notificationHandler({
+					label: "NEW HOST!",
+					host: this.data.host,
+					body: firstPayload
+				})
+			}
 		}
 		getData() {
 			return JSON.parse(JSON.stringify(this.data));//there is DEFINATLY a better way to do this; I don't even know if I need this security.
@@ -72,7 +81,7 @@ function ModuelBuilder(notificationHandler) {
 			//check reboot
 			payload.uptime = parseInt(payload.uptime)
 			if ((this.data.uptime) > payload.uptime) {
-				console.log("old", this.data ,"new", payload )
+				console.log("old", this.data, "new", payload)
 				notificationHandler({
 					label: "SYSTEM REBOOTED!",
 					host: this.data.host,
