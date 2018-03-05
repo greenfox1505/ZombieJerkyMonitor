@@ -2,7 +2,7 @@ var config = require("./config.json")
 var fs = require("fs");
 var twit = require("twit")
 
-function log_date() {
+function logDate() {
 	function pad(number) {
 		if (number < 10) {
 			return '0' + number;
@@ -36,14 +36,14 @@ class logger {
 	 */
 	simple(message) {
 		console.log(message)
-		fs.appendFile(this.file, log_date() + " : " + message + "\n", this.error)
+		fs.appendFile(this.file, logDate() + " : " + message + "\n", this.error)
 	}
 	/**
 	 * 
 	 * @param {string} message.hostname
 	 * 	 */
 	write(message) {
-		var line = log_date() + " : " +
+		var line = logDate() + " : " +
 			message.host + " , " + message.label + " : " + JSON.stringify(message) + "\n"
 		console.log(line)
 		fs.appendFile(this.file, line, this.error)
@@ -65,7 +65,7 @@ class NotificationManager {
 			this.log("starting twitter bot");
 			this.Twitter = new twit(config.twitter.keys);
 		} else { this.log("no twitter bot in config") }
-		this.tweet(config.serverName +  " : Monitor Rebooted! at " + log_date())
+		this.tweet(config.serverName +  " : Monitor Rebooted! at " + logDate())
 	}
 
 	//these twitter apis probably should be a seperate object...
@@ -101,7 +101,7 @@ class NotificationManager {
 		this.log(Message);
 		
 		this.tweet(
-			Message.host + " : " + Message.label
+			Message.host + " : " + Message.label + " at " + logDate()
 		)
 	}
 	getOld(callback) {
