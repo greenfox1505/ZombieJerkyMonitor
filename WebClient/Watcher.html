@@ -17,7 +17,6 @@
         }).then(GetNotifications).catch((e)=>{
         })
 
-
         function GetNotifications() {
             fetch("/API/notifications").then((e) => {
                 return e.json();

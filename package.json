@@ -20,6 +20,10 @@
   "dependencies": {
     "express": "^4.14.0",
     "npm": "^5.7.1",
-    "twit": "^2.2.9"
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "reactify": "^1.1.1",
+    "twit": "^2.2.9",
+    "watchify": "^3.11.0"
   }
 }
