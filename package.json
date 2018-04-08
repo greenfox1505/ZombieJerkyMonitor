@@ -1,6 +1,6 @@
 {
   "name": "monitor",
-  "version": "0.2.0",
+  "version": "0.2.5",
   "description": "monitor thing",
   "main": "run.js",
   "scripts": {},
@@ -19,7 +19,6 @@
   "homepage": "https://github.com/greenfox1505/monitor#readme",
   "dependencies": {
     "express": "^4.14.0",
-    "npm": "^5.7.1",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
     "reactify": "^1.1.1",
