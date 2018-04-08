@@ -1,30 +1,14 @@
 <head>
 
+    <style>
+        .Stale {
+            color: red
+        }
+    </style>
 </head>
 
 <body>
-    <div id="box"></div>
-    <script>
-        var box = document.getElementById("box");
-
-        fetch("./API/list").then((e) => {
-            return e.json();
-        }).then((e) => {
-            for( var i in e){
-                fetch("./API/get/" + e[i]).then((e)=>{
-                    return e.json()
-                }).then((e)=>{
-                    console.log(e);
-                    CreatePreLine(e);
-                })
-            }
-            console.log(e);
-        })
-        function CreatePreLine(data) {
-            var pre = document.createElement("pre");
-            pre.innerText = JSON.stringify(data, null, 2);
-            box.appendChild(pre);
-        }
-
-    </script>
+    <div id="mainBox"></div>
+    <div id="noteBox"></div>
+    <script src="./index.js"></script>
 </body>

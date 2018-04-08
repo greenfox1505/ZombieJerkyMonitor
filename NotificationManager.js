@@ -91,7 +91,7 @@ class NotificationManager {
 	}
 	push(Message) {
 		//todo new servers before the app has been running for 5 minutes don't count
-		Message.timestamp = Date.now();
+		Message.timeStamp = Date.now();
 		for (var i in this.subscribers) {
 			this.subscribers[i](Message);
 		}

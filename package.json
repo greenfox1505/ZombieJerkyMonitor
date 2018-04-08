@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/greenfox1505/monitor/issues"
   },
-  "homepage": "https://github.com/greenfox1505/monitor#readme",
+  "homepage": "https://monitor.zombiejerky.net",
   "dependencies": {
     "express": "^4.14.0",
     "react": "^16.3.1",
