@@ -15,7 +15,7 @@ function ModuelBuilder(notificationHandler) {
 	class HostManager {
 		//idk if this is needed, probaby should be some DB interface?
 		constructor() {
-			this.list = [];
+			this.list = {};
 		}
 		/** 
 		 * @returns {Array.<string>} List of hostnames
