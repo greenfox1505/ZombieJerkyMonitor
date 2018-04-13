@@ -48,7 +48,9 @@ app.get("/API/notifications/old",(req,res)=>{
 })
 
 
-
+app.get("/API/fullStatus",(req,res)=>{
+	res.send(hostManager.list)
+})
 
 app.listen(config.port, function () {
 	console.log('Zombie Jerky Monitor listening http://localhost:'+config.port+' !')
