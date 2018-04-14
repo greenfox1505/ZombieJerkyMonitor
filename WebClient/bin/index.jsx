@@ -2,6 +2,30 @@ var React = require('react');
 var ReactDOM = require("react-dom")
 // import ReactDOM from 'react-dom';
 
+let colorCount = 3
+let nextColor =0;
+
+var siteStyles = {}
+function getSiteClass(ip){
+    if(siteStyles[ip] == null){
+        siteStyles[ip] = nextColor;
+        nextColor =( nextColor+1 )% colorCount
+    }
+    return "Site " + "siteColor" + siteStyles[ip]
+}
+
+
+function getStyle(a){
+    if(typeof a == "string"){
+        if(siteStyles[a] == null){
+            siteStyles[a]= nextColor;
+            nextColor =( nextColor+1)%colorCount
+        }
+        return 
+    }
+    
+}
+
 class ServerList extends React.Component {
     render() {
         let sites = [];
@@ -28,8 +52,8 @@ class Site extends React.Component {
         }
         //todo reverse look up IPs, not sure how I should do that... 
         //maybe have a domain list on host and check matching IPs that way? w/e problem for later
-        return <div className="Site">
-            <h1>{ip}</h1>
+        return <div className={getSiteClass(ip)}>
+            <h1>Site: {ip}</h1>
             {inner}
         </div>
     }
@@ -48,9 +72,9 @@ class Server extends React.Component {
         myServerData.addNotification = (e) => { that.addNotification(e) }
         let myLastReport = lastReport(myServerData.timeStamp)
         let output =
-            <div className={myLastReport.stale ? "Server Stale" : "Server"}>
+            <div className={myLastReport.stale ? "Server Stale" : "Server"} style={getStyle(this.props.children)}>
                 <h2>{myServerData.host}</h2>
-                <p>local IP: {myServerData.local}</p>
+                <p>local IP: {myServerData.local.replace(/,/g, ', ')}</p>
                 <p>CPU Use: {myServerData.CPU}</p>
                 <p title={myServerData.uptime + " secs"}>Up for {deltaTime(myServerData.uptime)}.</p>
                 {myLastReport.dom}
@@ -210,3 +234,5 @@ function WatchNotifications(list) {
 
 }
 
+
+console.log("loaded window width: "+ window.innerWidth)
